@@ -1,22 +1,16 @@
-<!doctype html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <title>Detail Section</title>
-  </head>
 
 
-  <body>
+  {% comment %} <body>
     <h1>{{ question.question_text }}</h1>
     <ul>
       {% for choice in question.choice_set.all %}
       <li>{{choice.choice_text}}</li>
       {%endfor%}
-    </ul>
+    </ul> {% endcomment %}
 
-    </html> 
 
-  <form action="{%url 'vote' question.id %}"
+
+  <form action="{%url 'polls:vote' question.id %}"
   method="post">
   {% csrf_token %}
   <fieldset>
@@ -27,16 +21,16 @@
   {%endif%}
 
   {%for choice in question.choice_set.all%}
-  <input type="radio" name="choice" id="choice{{
-      forloop.counter}}"> Option {{choice.id}}: <label for = "choice {{ forloop.counter}}">{{choice.choice_text}}</label><br>
+  <input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{choice.id}}"> 
+      Option {{choice.id}}: <label for = "choice {{ forloop.counter}}">{{choice.choice_text}}</label><br>
   {%endfor%}
   </fieldset>
 
-  <input type="submit" value="vote">
+  <input type="submit" value="Vote">
   </form>
 
 
 
-  </body>
+  {% comment %} </body> {% endcomment %}
 
 
