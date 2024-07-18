@@ -28,13 +28,11 @@
 
   {%for choice in question.choice_set.all%}
   <input type="radio" name="choice" id="choice{{
-      forloop.counter}}"> value="{{ choice.id}}"
-      <label for = "choice {{ forloop.counter}}">{{
-          choice.choice_text}}</label><br>
+      forloop.counter}}"> Option {{choice.id}}: <label for = "choice {{ forloop.counter}}">{{choice.choice_text}}</label><br>
   {%endfor%}
   </fieldset>
 
-  <input type="submit" value="Vote">
+  <input type="submit" value="vote">
   </form>
 
 
