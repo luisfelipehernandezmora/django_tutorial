@@ -1,13 +1,14 @@
-from typing import Any
-from django.db.models.query import QuerySet
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
-# from django.template import loader # Not needed anymore, was part of tutorial
-from .models import Choice, Question
-from django.http import Http404 # Try-except section
 from django.db.models import F
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import generic
+
+from .models import Choice, Question
+
+# from django.db.models.query import QuerySet
+# # from django.template import loader # Not needed anymore, was part of tutorial
+# from django.http import Http404 # Try-except section
     
 class IndexView(generic.ListView):
     template_name="polls/index.html"
@@ -15,7 +16,7 @@ class IndexView(generic.ListView):
     
     def get_queryset(self):
         """Return the last five published questions"""
-        return Question.objects.order_by(-"pub_date")[:5]
+        return Question.objects.order_by("-pub_date")[:5]
     
 class DetailView(generic.DetailView):
     model=Question
