@@ -1,3 +1,10 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+<img src="{% static 'polls/background.png' %}"alt="Background Image" class="background-image" >
+
+{% comment %} <link rel="stylesheet" href="{% static 'polls/style.css' %}"> {% endcomment %}
+
 {%if latest_question_list%}
 
     <ul>
